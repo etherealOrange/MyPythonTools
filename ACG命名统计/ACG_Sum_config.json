@@ -1,0 +1,16 @@
+{
+  "config":{
+    "ACG_srt": "G:",
+    "Search_srt": ".",
+    "ACG_sort_names": {
+      "T0": "ACG T0",
+      "T1": "ACG T1",
+      "T2": "ACG T2",
+      "T3": "ACG T3",
+      "T4": "ACG T4",
+      "T5": "ACG T5"
+    },
+    "Filter": "mp4,mkv,avi,mpg,mpeg,mov",
+    "Result_name": "结果.txt"
+  }
+}
