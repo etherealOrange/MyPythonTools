@@ -2,6 +2,7 @@ import os
 import json
 
 
+
 def IfSearchFolder(ls, Flts):
     for dirname in ls:
         AftSplit = dirname.split('.')
