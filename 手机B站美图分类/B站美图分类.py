@@ -3,7 +3,6 @@ import os
 import json
 import shutil
 import threading
-import cv2 as cv
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
