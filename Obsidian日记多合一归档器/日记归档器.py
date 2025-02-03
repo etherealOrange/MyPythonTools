@@ -4,6 +4,7 @@ from datetime import datetime
 # !!!!!!!!!!修改位置!!!!!!!!!!
 ARCH_src = "ARCH"
 diary_src = "diary"
+Ignore_Month = False
 
 def loadYuml():
     global addI
@@ -44,18 +45,27 @@ def loadYuml():
 
 if __name__ == '__main__':
     MdList = os.listdir(diary_src)
-    i = 0
-    while i < len(MdList):
-        if not os.path.isfile(diary_src + "/" + MdList[i]):
-            MdList.pop(i)
-            continue
-        if "md" != MdList[i].split(".")[-1].lower():
-            MdList.pop(i)
-        i += 1
-
     now = datetime.now()
-    year = str(now.year)
+    year = now.year
     month = (now.month - 2) % 12 + 1
+    filtered_list = []
+    for i in MdList:
+        if not os.path.isfile(diary_src + "/" + i):
+            continue
+        if "md" != i.split(".")[-1].lower():
+            continue
+        filestat = os.stat(diary_src + "/" + i)
+        createdTime = filestat.st_ctime
+        createdTime = datetime.fromtimestamp(createdTime)
+        if createdTime.year != year:
+            continue
+        if not Ignore_Month and createdTime.month != month:
+            continue
+        filtered_list.append(i)
+    MdList = filtered_list
+    print(MdList)
+    year = str(now.year)
+
     if month < 10:
         month = "0" + str(month)
     else:
