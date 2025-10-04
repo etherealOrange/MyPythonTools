@@ -62,7 +62,8 @@ def retrieve_message(json_path):
                 if part != "":
                     title = part
             illegal_chars = '《》、“”‘’\'*?/\\|<>:\"'
-            title = title.replace(illegal_chars,'_')
+            trans_table = str.maketrans(illegal_chars, '_' * len(illegal_chars))
+            title = title.translate(trans_table)
             return [cover,title]
     return []
 
