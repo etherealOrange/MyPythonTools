@@ -58,9 +58,8 @@ Image.MAX_IMAGE_PIXELS = None # 我禁用了PIL的像素大小限制,不要读�
 
 
 ## 手机B站缓存整合
-- 临时的合成器,耦合性强
-- 使用本地的ffmpeg合并B站的m4s文件(音频和视频)
-- 功能:放在所有B站缓存文件夹边上可以把文件夹内的数据整合到一块包括`danmaku.xml` `entry.json` `index.json` `audio.m4s` `video.m4s`和合成后的`成品.mp4`
-- 功能:重命名视频和文件夹名称为`entry.json`文件中的`title`或者`page_data`的`part`,优先后者
-- 依赖:需要本地安装ffmpeg并加入环境变量
-- `import os` `import subprocess as sp` `import json` `import shutil`
+- 使用递归算法优化过后的合成器
+- 效果：在根目录生成带有视频名称的，有封面，有声音的MP4视频，和有视频名称的其他文件的ZIP压缩包
+  <img alt="img.png" height="60" src="图片/img.png" width="88"/>
+- 在完成后并不会删除原本的文件
+- 需配置本地的ffmpeg和python否则无法使用
